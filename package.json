@@ -1,7 +1,7 @@
 {
-  "name": "boolex",
+  "name": "contextex",
   "version": "1.0.0",
-  "description": "Bool Expression",
+  "description": "Context Expression",
   "main": "index.js",
   "directories": {
     "test": "test"

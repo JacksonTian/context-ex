@@ -15,58 +15,13 @@ var parse = function (source) {
 };
 
 describe('parser', function () {
-  it('(@node == "v4.1.0") should ok', function () {
-    var result = `(function (context) {\n  // @node == 'v4.1.0'\n  return context.node == 'v4.1.0';\n})\n`;
-    expect(parse("@node == 'v4.1.0'")).to.be(result);
+  it('${@load1} should ok', function () {
+    var result = '(function (context) {\n  // 系统负载较高：load1高于1.5，为${@load1}\n  return "系统负载较高：load1高于1.5，为" + (context.load1);\n})\n';
+    expect(parse("系统负载较高：load1高于1.5，为${@load1}")).to.be(result);
   });
 
-  it('(@num != 0) should ok', function () {
-    var result = `(function (context) {\n  // @num != 0\n  return context.num != 0;\n})\n`;
-    expect(parse("@num != 0")).to.be(result);
-  });
-
-  it('(@num > 10) should ok', function () {
-    var result = `(function (context) {\n  // @num > 10\n  return context.num > 10;\n})\n`;
-    expect(parse("@num > 10")).to.be(result);
-  });
-
-  it('(@num >= 10) should ok', function () {
-    var result = `(function (context) {\n  // @num >= 10\n  return context.num >= 10;\n})\n`;
-    expect(parse("@num >= 10")).to.be(result);
-  });
-
-  it('(@count < 10) should ok', function () {
-    var result = `(function (context) {\n  // @count < 10\n  return context.count < 10;\n})\n`;
-    expect(parse("@count < 10")).to.be(result);
-  });
-
-  it('(@count <= 10) should ok', function () {
-    var result = `(function (context) {\n  // @count <= 10\n  return context.count <= 10;\n})\n`;
-    expect(parse("@count <= 10")).to.be(result);
-  });
-
-  it('(@message include "TypeError") should ok', function () {
-    var result = `(function (context) {\n  // @message include "TypeError"\n  return ("" + context.message).indexOf("TypeError") !== -1;\n})\n`;
-    expect(parse('@message include "TypeError"')).to.be(result);
-  });
-
-  it('(@num > 10 && @num < 20) should ok', function () {
-    var result = `(function (context) {\n  // @num > 10 && @num < 20\n  return context.num > 10 && context.num < 20;\n})\n`;
-    expect(parse("@num > 10 && @num < 20")).to.be(result);
-  });
-
-  it('(@num > 10 || @num < 20) should ok', function () {
-    var result = `(function (context) {\n  // @num > 10 || @num < 20\n  return context.num > 10 || context.num < 20;\n})\n`;
-    expect(parse("@num > 10 || @num < 20")).to.be(result);
-  });
-
-  it('(some => @node == \"v4.1.0\") should ok', function () {
-    var result = `(function (context) {\n  // some => @node == "v4.1.0"\n  return Array.isArray(context) && context.some(function (context) {\n    return context.node == "v4.1.0";\n  });\n})\n`;
-    expect(parse("some => @node == \"v4.1.0\"")).to.be(result);
-  });
-
-  it('(@count <= 10 && (@num == 10 || @num == 20)) should ok', function () {
-    var result = `(function (context) {\n  // @count <= 10 && (@num == 10 || @num == 20)\n  return context.count <= 10 && (context.num == 10 || context.num == 20);\n})\n`;
-    expect(parse("@count <= 10 && (@num == 10 || @num == 20)")).to.be(result);
+  it('${@load1 + @load2} should ok', function () {
+    var result = '(function (context) {\n  // load maybe too high: ${@load1 + @load2}\n  return "load maybe too high: " + (context.load1 + context.load2);\n})\n';
+    expect(parse("load maybe too high: ${@load1 + @load2}")).to.be(result);
   });
 });

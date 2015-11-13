@@ -12,6 +12,9 @@ exports.parse = function (source) {
 
 exports.compile = function (source) {
   var code = exports.parse(source);
-  console.log(code);
   return vm.runInThisContext(code);
+};
+
+exports.render = function (source, context) {
+  return exports.compile(source)(context);
 };

@@ -2,7 +2,7 @@
 
 const vm = require('vm');
 
-var Parser = require('./lib/parser');
+const Parser = require('./lib/parser');
 
 exports.parse = function (source) {
   var parser = new Parser(source);

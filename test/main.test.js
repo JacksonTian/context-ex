@@ -7,7 +7,7 @@ var vm = require('vm');
 
 describe('contextex', function () {
   it('should ok', function () {
-    var expr = "数量大于等于10，为${@count}";
+    var expr = '数量大于等于10，为${@count}';
     var code = exp.parse(expr);
     // get function with vm
     var explain = vm.runInThisContext(code);
@@ -17,7 +17,7 @@ describe('contextex', function () {
   });
 
   it('add should ok', function () {
-    var expr = "${@count} * 2 = ${@count * 2}";
+    var expr = '${@count} * 2 = ${@count * 2}';
     var code = exp.parse(expr);
     // get function with vm
     var explain = vm.runInThisContext(code);

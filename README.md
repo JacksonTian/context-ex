@@ -13,13 +13,14 @@ $ npm install contextex --save
 Script with contentex:
 
 ```
-var explain = require('contextex');
+const explain = require('contextex');
 
-var jackson = {name: "Jackson Tian", age: 18};
+const jackson = {name: "Jackson Tian", age: 18};
 
-var str = 'I am ${@name}, I am ${@age} years old.';
-var result = explain(str, context);
+const str = 'I am ${@name}, I am ${@age} years old.';
+const result = explain(str, context);
 
+console.log(result);
 // => 'I am Jackson Tian, I am 18 years old.'
 ```
 

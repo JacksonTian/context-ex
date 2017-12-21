@@ -7,13 +7,16 @@
     "test": "test"
   },
   "scripts": {
-    "test": "make test"
+    "lint": "eslint --fix lib test index.js",
+    "test": "mocha -R spec test/*.js",
+    "test-cov": "nyc --reporter=html --reporter=text mocha -R spec test/*.js"
   },
   "author": "Jackson Tian",
   "license": "MIT",
   "devDependencies": {
-    "expect.js": "~0.3.1",
-    "istanbul": "~0.4.0",
-    "mocha": "~2.3.3"
+    "eslint": "^4.13.1",
+    "expect.js": "^0.3.1",
+    "mocha": "^4.0.1",
+    "nyc": "^11.4.1"
   }
 }

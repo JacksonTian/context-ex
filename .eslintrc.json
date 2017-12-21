@@ -21,9 +21,12 @@
         "semi": [
             "error",
             "always"
-        ]
+        ],
+        "no-console": [0],
+        "no-constant-condition": [0]
     },
     "globals": {
-        "it": true
+        "it": true,
+        "describe": true
     }
 }
